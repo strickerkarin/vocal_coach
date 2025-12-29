@@ -25,7 +25,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     setMobileMenuOpen(false);
   };
 
-  const menuItems = ['Método', 'Sobre Mí', 'Clases', 'Testimonios'];
+  const menuItems = [
+    { label: 'Método', id: 'metodo' },
+    { label: 'Sobre Mí', id: 'sobre-mi' },
+    { label: 'Clases', id: 'clases' },
+    { label: 'Testimonios', id: 'testimonios' }
+  ];
 
   return (
     <nav 
@@ -54,11 +59,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <div className="hidden md:flex gap-8 items-center font-medium">
           {menuItems.map((item) => (
             <button 
-              key={item} 
-              onClick={() => handleNavigate(item.toLowerCase().replace(' ', '-').replace('ó', 'o'))}
+              key={item.id} 
+              onClick={() => handleNavigate(item.id)}
               className="hover:text-[#EC96A4] transition-colors uppercase text-sm tracking-widest"
             >
-              {item}
+              {item.label}
             </button>
           ))}
           <button 
@@ -86,11 +91,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <div className="md:hidden absolute top-full left-0 w-full bg-gray-900 p-6 flex flex-col gap-4 shadow-2xl border-t border-gray-800">
           {menuItems.map((item) => (
             <button 
-              key={item} 
-              onClick={() => handleNavigate(item.toLowerCase().replace(' ', '-').replace('ó', 'o'))}
+              key={item.id} 
+              onClick={() => handleNavigate(item.id)}
               className="text-left text-lg font-medium py-2 border-b border-gray-800"
             >
-              {item}
+              {item.label}
             </button>
           ))}
           <button 
