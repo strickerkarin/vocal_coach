@@ -26,10 +26,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   };
 
   const menuItems = [
+    { label: 'Inicio', id: 'hero' },
     { label: 'Método', id: 'metodo' },
     { label: 'Sobre Mí', id: 'sobre-mi' },
     { label: 'Clases', id: 'clases' },
-    { label: 'Testimonios', id: 'testimonios' }
+    { label: 'Testimonios', id: 'testimonios' },
+    { label: 'Contacto', id: 'contacto' }
   ];
 
   return (

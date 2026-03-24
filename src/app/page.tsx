@@ -7,6 +7,7 @@ import { Metodo } from '@/components/Metodo';
 import { SobreMi } from '@/components/SobreMi';
 import { Clases } from '@/components/Clases';
 import { Testimonios } from '@/components/Testimonios';
+import { Contacto } from '@/components/Contacto';
 import { Footer } from '@/components/Footer';
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp';
 import { theme } from '@/constants/theme';
@@ -30,6 +31,7 @@ export default function Home() {
       <SobreMi />
       <Clases />
       <Testimonios />
+      <Contacto />
       <Footer />
       <FloatingWhatsApp />
     </div>
