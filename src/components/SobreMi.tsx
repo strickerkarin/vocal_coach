@@ -40,14 +40,14 @@ export const SobreMi: React.FC = () => {
         
         <div className="w-full md:w-1/2">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Más que una profesora,<br/> tu <span style={{ color: theme.colors.secondary }}>entrenadora vocal</span>.
+            Mucho más que técnica:<br/> un camino hacia tu <span style={{ color: theme.colors.secondary }}>identidad vocal</span>.
           </h2>
           <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
             <p>
-              Hola. Soy cantante profesional y coach vocal certificada. Mi misión es simple: ayudarte a derribar las barreras que te impiden expresarte libremente.
+              Como cantante y vocal coach, entiendo que la voz es nuestra herramienta de comunicación más íntima. Mi enfoque integra el entrenamiento funcional con la gestión emocional para que logres una expresión genuina y saludable.
             </p>
             <p>
-              Creo firmemente que &quot;cantar bien&quot; no es solo afinar. Es tener la confianza para pararse en un escenario (o frente a un espejo) y dejar salir lo que llevás dentro. Mi método combina la rigurosidad técnica con la libertad creativa.
+              Cantar es un acto de vulnerabilidad y poder. Aquí no buscamos una &quot;perfección&quot; impuesta, sino la verdad de tu sonido. Te brindo las herramientas para que la timidez deje paso a una seguridad real, permitiéndote disfrutar plenamente de cada nota.
             </p>
             
             <div className="pt-8 flex flex-col sm:flex-row gap-8 border-t border-white/5 mt-8">
@@ -69,6 +69,18 @@ export const SobreMi: React.FC = () => {
                   <span className="text-sm text-gray-400">& Presencial</span>
                 </div>
               </div>
+            </div>
+            
+            <div className="mt-8">
+              <a 
+                href="https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-bold text-white bg-[#1DB954] hover:bg-[#1ed760] transition-colors"
+              >
+                <Globe size={20} />
+                Escuchá mi música en Spotify
+              </a>
             </div>
           </div>
         </div>

@@ -29,9 +29,9 @@ export const Metodo: React.FC = () => {
             >
               <Heart style={{ color: theme.colors.secondary }} />
             </div>
-            <h4 className="text-xl font-bold mb-3">Salud Vocal</h4>
+            <h4 className="text-xl font-bold mb-3">Espacio Cuidado</h4>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Aprendé a usar tu voz sin fatiga ni daños. La técnica saludable es la base de cualquier artista duradero.
+              Un ambiente sin juicio y con total libertad. Nos enfocamos en desbloquear la timidez, el miedo y la inseguridad al cantar.
             </p>
           </div>
 
@@ -41,16 +41,17 @@ export const Metodo: React.FC = () => {
             style={{ background: `linear-gradient(135deg, ${theme.colors.secondary}, #C06C84)` }}
           >
             <div className="relative z-10">
-              <h4 className="text-2xl font-bold mb-4 text-white">Interpretación y Estilo</h4>
+              <h4 className="text-2xl font-bold mb-4 text-white">Conexión Emocional</h4>
               <p className="text-white/90 text-lg max-w-md">
-                Encontrá tu propio sonido. Trabajamos matices, dinámicas y conexión emocional para que cada canción sea tuya.
+                La voz se escucha, se libera y se conecta con lo que sos. Cantá desde lo que sentís, eligiendo un repertorio de canciones que te representen.
               </p>
-              <button 
-                className="mt-6 px-6 py-2 bg-white rounded-full font-bold text-sm hover:bg-gray-100 transition-colors flex items-center gap-2" 
+              <a 
+                href="#clases"
+                className="mt-6 inline-flex px-6 py-2 bg-white rounded-full font-bold text-sm hover:bg-gray-100 transition-colors items-center gap-2" 
                 style={{ color: theme.colors.secondary }}
               >
-                Ver más <ArrowRight size={16} />
-              </button>
+                Ver clases <ArrowRight size={16} />
+              </a>
             </div>
             <Music className="absolute -bottom-4 -right-4 w-40 h-40 text-white/10 group-hover:rotate-12 transition-transform duration-700" />
           </div>
@@ -58,9 +59,9 @@ export const Metodo: React.FC = () => {
           {/* Card 3 */}
           <div className="md:col-span-2 bg-white/5 p-8 rounded-3xl border border-white/5 flex flex-col md:flex-row items-center gap-8 group hover:bg-white/10 transition-colors">
             <div className="flex-1">
-              <h4 className="text-xl font-bold mb-3">Técnica Personalizada</h4>
+              <h4 className="text-xl font-bold mb-3">Experiencia Integral</h4>
               <p className="text-gray-400 text-sm mb-4">
-                Cada voz es una huella digital. Diseño ejercicios específicos para tu registro y necesidades actuales.
+                No hay una voz igual a la tuya. Trabajamos cuerpo y respiración, liberamos tensiones y aplicamos técnica vocal sin exigencias.
               </p>
               <div className="flex gap-2 flex-wrap">
                 {['Respiración', 'Apoyo', 'Resonancia', 'Articulación'].map(tag => (
@@ -98,9 +99,9 @@ export const Metodo: React.FC = () => {
             >
               <CheckCircle2 style={{ color: theme.colors.success }} />
             </div>
-            <h4 className="text-xl font-bold mb-3">Resultados Reales</h4>
+            <h4 className="text-xl font-bold mb-3">Trabajo Personal</h4>
             <p className="text-gray-400 text-sm">
-              Grabamos las clases para que monitorees tu progreso semana a semana.
+              Un espacio para conectar con tu autenticidad, liberando bloqueos y redescubriendo el placer de cantar sin juicios.
             </p>
           </div>
         </div>

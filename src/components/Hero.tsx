@@ -25,27 +25,27 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-[1400px] w-full mx-auto px-6 grid lg:grid-cols-[1fr_1.2fr] gap-8 items-center relative z-10">
         <div className="space-y-8 animate-fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm tracking-wide">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
             Cupos disponibles para este mes
           </div>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Descubrí tu <br />
+            Conectá con tu <br />
             <span 
               className="text-transparent bg-clip-text" 
               style={{ backgroundImage: `linear-gradient(to right, ${theme.colors.secondary}, #F7B5C1)` }}
             >
-              Verdadera Voz
+              Propia Voz
             </span>
           </h1>
           <p className="text-lg md:text-xl opacity-80 max-w-lg leading-relaxed">
-            Técnica vocal moderna, interpretación y coaching para cantantes que quieren dejar huella. Tu instrumento es único, aprendé a usarlo.
+            Tu voz es única. Y tiene un propósito. En mis clases te acompaño a descubrirla, desarrollarla y confiar en ella.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
-              onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+              onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/5491159545123?text=Hola,%20quiero%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
               className="px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all transform hover:-translate-y-1"
               style={{ 
                 backgroundColor: theme.colors.secondary, 
@@ -66,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           
           <div className="pt-8 flex items-center gap-4 opacity-60">
             <div className="flex -space-x-4">
-              {[1,2,3,4].map(i => (
+              {[1,2,3].map(i => (
                 <div 
                   key={i} 
                   className="w-10 h-10 rounded-full border-2 border-gray-900 bg-gray-700 flex items-center justify-center text-xs"
@@ -75,19 +75,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
               ))}
             </div>
-            <p className="text-sm">+200 alumnos formados</p>
+            <p className="text-sm">Para todos los niveles</p>
           </div>
         </div>
 
-        <div className="relative h-[600px] hidden md:block">
+        <div className="relative min-h-[600px] lg:min-h-[700px] hidden md:block w-full">
           {/* Creative Image Composition */}
           <div className="absolute inset-0 flex items-center justify-center">
             {/* Main Photo Container */}
-            <div className="w-80 h-[500px] rounded-[2rem] overflow-hidden relative z-20 border-4 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-gray-800">
+            <div className="w-[28rem] h-[600px] rounded-[2rem] overflow-hidden relative z-20 border-4 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-gray-800">
               
               {!heroImageError ? (
                 <img 
-                  src="https://images.pexels.com/photos/3775131/pexels-photo-3775131.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="/hero-image.png"
                   alt="Vocal Coach" 
                   className="w-full h-full object-cover"
                   onError={() => setHeroImageError(true)}
@@ -138,7 +138,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <div className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-full opacity-20 blur-xl"></div>
             
             {/* Floating Badge */}
-            <div className="absolute top-1/4 right-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 z-30 shadow-xl animate-bounce-slow">
+            <div className="absolute top-1/4 -right-4 lg:-right-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 z-30 shadow-xl animate-bounce-slow">
               <Music className="w-8 h-8 mb-2" style={{ color: theme.colors.secondary }} />
               <p className="text-xs font-bold">Técnica<br/>Mixta</p>
             </div>

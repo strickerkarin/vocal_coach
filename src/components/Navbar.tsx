@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </button>
           ))}
           <button 
-            onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+            onClick={() => window.open('https://wa.me/5491159545123?text=Hola,%20quiero%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
             className="px-6 py-2 rounded-full font-bold transition-transform hover:scale-105 shadow-lg flex items-center gap-2"
             style={{ backgroundColor: theme.colors.secondary, color: 'white' }}
           >
@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </button>
           ))}
           <button 
-            onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+            onClick={() => window.open('https://wa.me/5491159545123?text=Hola,%20quiero%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
             className="mt-4 w-full py-3 rounded-lg font-bold flex justify-center items-center gap-2"
             style={{ backgroundColor: theme.colors.secondary, color: 'white' }}
           >

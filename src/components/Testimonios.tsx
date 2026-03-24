@@ -13,7 +13,7 @@ interface Testimonio {
 const testimonios: Testimonio[] = [
   { 
     name: "Sofía M.", 
-    text: "Llegué con nódulos y miedo a cantar. Hoy tengo una técnica sólida y recuperé mi confianza. Es mágica.", 
+    text: "Llegué con nódulos y miedo a cantar. Hoy tengo una técnica sólida y recuperé mi confianza. Es fascinante.", 
     role: "Cantante Amateur" 
   },
   { 

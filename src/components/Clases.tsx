@@ -40,7 +40,11 @@ export const Clases: React.FC = () => {
   return (
     <section id="clases" className="py-20 px-6" style={{ backgroundColor: theme.colors.tertiary }}>
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12">Modalidades de Trabajo</h2>
+        <h2 className="text-4xl font-bold mb-4">Modalidades de Trabajo</h2>
+        <p className="text-lg text-gray-400 mb-12">
+          🎶 Todos los niveles – no necesitás experiencia previa.<br/>
+          Tu voz tiene una historia que contar. Agendá tu primera sesión y empezá a descubrirla.
+        </p>
         
         <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan, idx) => (
@@ -76,7 +80,7 @@ export const Clases: React.FC = () => {
                 ))}
               </ul>
               <button 
-                onClick={() => window.open('https://wa.me/1234567890?text=Hola,%20quiero%20info%20sobre%20las%20clases...', '_blank')}
+                onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/5491159545123?text=Hola,%20quiero%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
                 className={`w-full py-3 rounded-xl font-bold transition-colors ${
                   plan.highlight 
                     ? 'text-white hover:bg-gray-700' 
