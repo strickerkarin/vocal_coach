@@ -16,8 +16,8 @@ export const SobreMi: React.FC = () => {
         <div className="w-full md:w-1/2 relative">
           <div className="aspect-[3/4] rounded-tr-[5rem] rounded-bl-[5rem] overflow-hidden shadow-2xl border-2 border-white/10 relative group">
             <img 
-              src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=800&auto=format&fit=crop" 
-              alt="Mujer Cantando" 
+              src="/carla-base-degrade.png" 
+              alt="Carla Abalos Cantando" 
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -73,7 +73,7 @@ export const SobreMi: React.FC = () => {
             
             <div className="mt-8">
               <a 
-                href="https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT" 
+                href="https://open.spotify.com/album/3F66BXyM91ys8VflpHzOaU?si=vhZZ3BCPQ-O_rbBAqPf4Wg" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-bold text-white bg-[#1DB954] hover:bg-[#1ed760] transition-colors"

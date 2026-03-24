@@ -15,8 +15,8 @@ export const Metodo: React.FC = () => {
           >
             Mi Enfoque
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold">
-            No es solo cantar,<br/> es comunicar.
+           <h3 className="text-3xl md:text-5xl font-bold">
+            No es solo cantar<br/> es saber contar algo con tu voz.
           </h3>
         </div>
 
