@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
-              onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/5491159545123?text=Hola,%20quiero%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
+              onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/5491159545123?text=Hola!%20Mi%20nombre%20es:%20___%20me%20interesa%20la%20modalidad:%20________%20(o%20el%20plan:%20___)%20y%20quisiera%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
               className="px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all transform hover:-translate-y-1"
               style={{ 
                 backgroundColor: theme.colors.secondary, 
@@ -79,11 +79,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="relative min-h-[600px] lg:min-h-[700px] hidden md:block w-full">
+        <div className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] w-full mt-12 md:mt-0">
           {/* Creative Image Composition */}
           <div className="absolute inset-0 flex items-center justify-center">
             {/* Main Photo Container */}
-            <div className="w-[28rem] h-[600px] rounded-[2rem] overflow-hidden relative z-20 border-4 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-gray-800">
+            <div className="w-full max-w-[22rem] md:max-w-[28rem] h-[450px] md:h-[600px] rounded-[2rem] overflow-hidden relative z-20 border-4 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-gray-800">
               
               {!heroImageError ? (
                 <img 
