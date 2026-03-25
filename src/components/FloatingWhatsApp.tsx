@@ -6,7 +6,7 @@ import { MessageCircle } from 'lucide-react';
 export const FloatingWhatsApp: React.FC = () => {
   return (
     <a 
-      href={process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/5491159545123?text=Hola!%20Mi%20nombre%20es:%20___%20me%20interesa%20la%20modalidad:%20________%20(o%20el%20plan:%20___)%20y%20quisiera%20m%C3%A1s%20info%20sobre%20las%20clases"} 
+      href={process.env.NEXT_PUBLIC_WHATSAPP_URL || "#"} 
       target="_blank" 
       rel="noreferrer"
       className="fixed bottom-6 right-6 w-16 h-16 rounded-full shadow-2xl z-50 transition-all hover:scale-110 animate-bounce-slow flex flex-row items-center justify-center group"

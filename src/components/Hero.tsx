@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
-              onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/5491159545123?text=Hola!%20Mi%20nombre%20es:%20___%20me%20interesa%20la%20modalidad:%20________%20(o%20el%20plan:%20___)%20y%20quisiera%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
+              onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || '#', '_blank')}
               className="px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all transform hover:-translate-y-1"
               style={{ 
                 backgroundColor: theme.colors.secondary, 

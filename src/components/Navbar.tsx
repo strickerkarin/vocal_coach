@@ -69,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </button>
           ))}
           <button 
-            onClick={() => window.open('https://wa.me/5491159545123?text=Hola!%20Mi%20nombre%20es:%20___%20me%20interesa%20la%20modalidad:%20________%20(o%20el%20plan:%20___)%20y%20quisiera%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
+            onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || '#', '_blank')}
             className="px-6 py-2 rounded-full font-bold transition-transform hover:scale-105 shadow-lg flex items-center gap-2"
             style={{ backgroundColor: theme.colors.secondary, color: 'white' }}
           >
@@ -101,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </button>
           ))}
           <button 
-            onClick={() => window.open('https://wa.me/5491159545123?text=Hola!%20Mi%20nombre%20es:%20___%20me%20interesa%20la%20modalidad:%20________%20(o%20el%20plan:%20___)%20y%20quisiera%20m%C3%A1s%20info%20sobre%20las%20clases', '_blank')}
+            onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || '#', '_blank')}
             className="mt-4 w-full py-3 rounded-lg font-bold flex justify-center items-center gap-2"
             style={{ backgroundColor: theme.colors.secondary, color: 'white' }}
           >
