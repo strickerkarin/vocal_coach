@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { User, Play, Mic, Music } from 'lucide-react';
 import { theme } from '@/constants/theme';
 
@@ -86,10 +87,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <div className="w-full max-w-[22rem] md:max-w-[28rem] h-[450px] md:h-[600px] rounded-[2rem] overflow-hidden relative z-20 border-4 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-gray-800">
               
               {!heroImageError ? (
-                <img 
+                <Image 
                   src="/hero-image.png"
                   alt="Vocal Coach" 
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                   onError={() => setHeroImageError(true)}
                 />
               ) : (

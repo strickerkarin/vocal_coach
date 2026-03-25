@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
       </div>
       <div className="text-center mt-12 text-xs text-gray-600 flex flex-col items-center gap-2">
         <p>© {new Date().getFullYear()} Tu Coach Vocal. Todos los derechos reservados.</p>
-        <p className="opacity-50">Hecho por NKLabs</p>
+        <p className="text-gray-500 font-medium">Hecho por NKLabs</p>
       </div>
     </footer>
   );

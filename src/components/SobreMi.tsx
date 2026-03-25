@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Award, Globe, Mic } from 'lucide-react';
 import { theme } from '@/constants/theme';
 
@@ -15,11 +16,15 @@ export const SobreMi: React.FC = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
         <div className="w-full md:w-1/2 relative">
           <div className="aspect-[3/4] rounded-tr-[5rem] rounded-bl-[5rem] overflow-hidden shadow-2xl border-2 border-white/10 relative group">
-            <img 
-              src="/carla-base-degrade.png" 
-              alt="Carla Abalos Cantando" 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-            />
+            <div className="relative w-full h-full">
+              <Image 
+                src="/carla-base-degrade.png" 
+                alt="Carla Abalos Cantando" 
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
           
