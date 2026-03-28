@@ -14,7 +14,7 @@ export const testimonios: Testimonio[] = [
     text: "Las clases grupales son muy completas y dinámicas: hacemos respiración, técnica y practicamos canciones. ¡Siempre hay algo nuevo para aprender!",
     role: "Alumna",
     image: "/images/testimonios/mora.jpeg",
-    imageStyle: { objectPosition: "center 15%" }
+    imageStyle: { objectPosition: "center 1%" }
   },
   {
     name: "Bárbara",
@@ -32,7 +32,8 @@ export const testimonios: Testimonio[] = [
     name: "Ailen",
     text: "Encuentro la confianza para expresarme, crecer y conectar con la música. Las clases son un espacio donde mi voz refleja mi verdadera esencia.",
     role: "Alumna",
-    image: "/images/testimonios/ailen.jpeg"
+    image: "/images/testimonios/ailen.jpeg",
+    imageStyle: { transform: "scale(1.9) translateY(7px)", objectPosition: "center 30%" }
   },
   {
     name: "Luly",
@@ -50,13 +51,15 @@ export const testimonios: Testimonio[] = [
     name: "Karin",
     text: "Amo que se adapten a mis objetivos y me ayuden a superar obstáculos. ¡Disfruto mucho que aplicamos la teoría practicando con canciones que me encantan!",
     role: "Alumna",
-    image: "/images/testimonios/karin.png"
+    image: "/images/testimonios/karin.jpeg",
+    imageStyle: { transform: "scale(1) translateX(-3px)", objectPosition: "center 35%" }
+
   },
   {
     name: "Nahuel",
     text: "Carla es muy dinámica y se preocupa porque entendamos todos los conceptos. Luego los ponemos en práctica con ejercicios personalizados. ¡La súper recomiendo!",
     role: "Alumno",
     image: "/images/testimonios/nahuel.jpeg",
-    imageStyle: { transform: "scale(1.8)" }
+    imageStyle: { transform: "scale(1.9)" }
   }
 ];
