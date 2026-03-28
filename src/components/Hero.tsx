@@ -32,13 +32,20 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
             Cupos disponibles para este mes
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Conectá con tu <br />
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.2] md:leading-tight overflow-hidden pb-2">
+            <span className="block animate-sound-pulse whitespace-nowrap" style={{ animationDelay: '0.1s' }}>
+              Conectá con tu
+            </span>
             <span 
-              className="text-transparent bg-clip-text" 
-              style={{ backgroundImage: `linear-gradient(to right, ${theme.colors.secondary}, #F7B5C1)` }}
+              className="block text-transparent bg-clip-text animate-sound-pulse-delayed relative" 
+              style={{ 
+                backgroundImage: `linear-gradient(to right, ${theme.colors.secondary}, #F7B5C1, ${theme.colors.secondary})`,
+                backgroundSize: '200% auto',
+                animationDelay: '0.3s'
+              }}
             >
               Propia Voz
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer pointer-events-none"></span>
             </span>
           </h1>
           <p className="text-lg md:text-xl opacity-80 max-w-lg leading-relaxed">
