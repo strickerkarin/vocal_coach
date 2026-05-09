@@ -15,6 +15,10 @@ export const Contacto: React.FC = () => {
           {/* Instructions Column */}
           <div className="w-full md:w-1/2 flex flex-col gap-4">
             <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EC96A4]/10 border border-[#EC96A4]/30 text-sm tracking-wide mb-6 shadow-lg">
+                <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span>
+                <span className="text-white font-medium">Cupos disponibles para este mes</span>
+              </div>
               <h2 className="text-sm font-bold tracking-widest uppercase mb-2 text-[#EC96A4]">Ubicación</h2>
               <h3 className="text-3xl md:text-5xl font-bold mb-6">Dónde nos vemos</h3>
             </div>
