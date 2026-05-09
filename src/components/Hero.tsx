@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         ></div>
       </div>
 
-      <div className="max-w-[1000px] w-full mx-auto px-6 flex flex-col items-center text-center relative z-20 pt-20">
+      <div className="max-w-[1000px] w-full mx-auto px-6 flex flex-col items-center text-center relative z-20 pt-32 md:pt-40">
         <div className="space-y-8 animate-fade-in-up flex flex-col items-center">
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] overflow-visible pb-4">
             <span className="block animate-sound-pulse text-white drop-shadow-lg" style={{ animationDelay: '0.1s' }}>
