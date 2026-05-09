@@ -3,6 +3,7 @@
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
+import { Tuner } from '@/components/Tuner';
 import { Metodo } from '@/components/Metodo';
 import { SobreMi } from '@/components/SobreMi';
 import { Clases } from '@/components/Clases';
@@ -30,6 +31,7 @@ export default function Home() {
       <Metodo />
       <SobreMi />
       <Clases />
+      <Tuner />
       <Testimonios />
       <Contacto />
       <Footer />

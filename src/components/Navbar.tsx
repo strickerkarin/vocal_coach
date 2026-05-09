@@ -30,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     { label: 'Método', id: 'metodo' },
     { label: 'Sobre Mí', id: 'sobre-mi' },
     { label: 'Clases', id: 'clases' },
+    { label: 'Afinador', id: 'afinador' },
     { label: 'Testimonios', id: 'testimonios' },
     { label: 'Contacto', id: 'contacto' }
   ];

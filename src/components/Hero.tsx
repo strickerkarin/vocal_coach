@@ -13,146 +13,100 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const [heroImageError, setHeroImageError] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        {!heroImageError ? (
+          <Image 
+            src="/hero-image.png"
+            alt="Vocal Coach Background" 
+            fill
+            priority
+            quality={100}
+            className="object-cover object-[center_15%] sm:object-[center_20%]"
+            onError={() => setHeroImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-900" />
+        )}
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#1a1a2e]/90 z-10"></div>
+      </div>
+
       {/* Abstract Background Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+      <div className="absolute top-0 right-0 w-full h-full opacity-30 pointer-events-none z-10">
         <div 
-          className="absolute top-20 right-20 w-96 h-96 rounded-full blur-3xl" 
+          className="absolute top-20 right-20 w-96 h-96 rounded-full blur-[100px]" 
           style={{ backgroundColor: theme.colors.secondary }}
         ></div>
         <div 
-          className="absolute bottom-20 right-40 w-72 h-72 rounded-full blur-3xl" 
-          style={{ backgroundColor: '#2a2a40' }}
+          className="absolute bottom-20 left-40 w-72 h-72 rounded-full blur-[100px]" 
+          style={{ backgroundColor: theme.colors.tertiary }}
         ></div>
       </div>
 
-      <div className="max-w-[1400px] w-full mx-auto px-6 grid lg:grid-cols-[1fr_1.2fr] gap-8 items-center relative z-10">
-        <div className="space-y-8 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm tracking-wide">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      <div className="max-w-[1000px] w-full mx-auto px-6 flex flex-col items-center text-center relative z-20 pt-20">
+        <div className="space-y-8 animate-fade-in-up flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/40 border border-white/10 text-sm tracking-wide backdrop-blur-md shadow-xl">
+            <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span>
             Cupos disponibles para este mes
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.2] md:leading-tight overflow-hidden pb-2">
-            <span className="block animate-sound-pulse whitespace-nowrap" style={{ animationDelay: '0.1s' }}>
+          
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] overflow-visible pb-4">
+            <span className="block animate-sound-pulse text-white drop-shadow-lg" style={{ animationDelay: '0.1s' }}>
               Conectá con tu
             </span>
             <span 
-              className="block text-transparent bg-clip-text animate-sound-pulse-delayed relative" 
+              className="block text-transparent bg-clip-text animate-sound-pulse-delayed relative drop-shadow-2xl" 
               style={{ 
-                backgroundImage: `linear-gradient(to right, ${theme.colors.secondary}, #F7B5C1, ${theme.colors.secondary})`,
+                backgroundImage: `linear-gradient(to right, #ffffff, ${theme.colors.secondary}, #F7B5C1, #ffffff)`,
                 backgroundSize: '200% auto',
                 animationDelay: '0.3s'
               }}
             >
               Propia Voz
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer pointer-events-none"></span>
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer pointer-events-none mix-blend-overlay"></span>
             </span>
           </h1>
-          <p className="text-lg md:text-xl opacity-80 max-w-lg leading-relaxed">
-            Tu voz es única. Y tiene un propósito. En mis clases te acompaño a descubrirla, desarrollarla y confiar en ella.
+          
+          <p className="text-lg md:text-2xl opacity-100 max-w-2xl leading-relaxed text-gray-200 drop-shadow-md font-medium">
+            Tu voz es única y tiene un propósito. En mis clases te acompaño a descubrirla, desarrollarla y confiar en ella.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          
+          <div className="flex flex-col sm:flex-row gap-5 pt-6 w-full sm:w-auto">
             <button 
               onClick={() => window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL || '#', '_blank')}
-              className="px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all transform hover:-translate-y-1"
+              className="px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:-translate-y-1 hover:scale-105"
               style={{ 
                 backgroundColor: theme.colors.secondary, 
                 color: 'white', 
-                boxShadow: `0 10px 25px -5px ${theme.colors.secondary}50` 
+                boxShadow: `0 15px 30px -5px ${theme.colors.secondary}60` 
               }}
             >
               Empezar Ahora
             </button>
             <button 
               onClick={() => onNavigate('metodo')}
-              className="px-8 py-4 rounded-full font-bold text-lg border border-white/20 hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+              className="px-10 py-4 rounded-full font-bold text-lg border border-white/30 bg-black/30 backdrop-blur-md hover:bg-white/20 transition-all flex items-center justify-center gap-2 text-white hover:scale-105"
             >
               <Play size={20} fill="currentColor" />
               Cómo trabajo
             </button>
           </div>
           
-          <div className="pt-8 flex items-center gap-4 opacity-60">
+          <div className="pt-12 flex flex-col items-center gap-4 opacity-90">
             <div className="flex -space-x-4">
               {[1,2,3].map(i => (
                 <div 
                   key={i} 
-                  className="w-10 h-10 rounded-full border-2 border-gray-900 bg-gray-700 flex items-center justify-center text-xs"
+                  className="w-12 h-12 rounded-full border-2 border-gray-800 bg-gray-800 flex items-center justify-center text-xs shadow-xl relative overflow-hidden"
                 >
-                  <User size={16} />
+                  <User size={20} className="text-gray-400" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
                 </div>
               ))}
             </div>
-            <p className="text-sm">Para todos los niveles</p>
-          </div>
-        </div>
-
-        <div className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] w-full mt-12 md:mt-0">
-          {/* Creative Image Composition */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            {/* Main Photo Container */}
-            <div className="w-full max-w-[22rem] md:max-w-[28rem] h-[450px] md:h-[600px] rounded-[2rem] overflow-hidden relative z-20 border-4 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-gray-800">
-              
-              {!heroImageError ? (
-                <Image 
-                  src="/hero-image.png"
-                  alt="Vocal Coach" 
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                  onError={() => setHeroImageError(true)}
-                />
-              ) : (
-                <div 
-                  className="w-full h-full flex flex-col items-center justify-center relative p-6 text-center" 
-                  style={{ background: `linear-gradient(135deg, ${theme.colors.tertiary}, ${theme.colors.primary})` }}
-                >
-                  <div 
-                    className="w-32 h-32 rounded-full flex items-center justify-center mb-6 relative animate-pulse" 
-                    style={{ backgroundColor: 'rgba(236, 150, 164, 0.2)' }}
-                  >
-                    <Mic size={64} style={{ color: theme.colors.secondary }} />
-                    <div className="absolute inset-0 rounded-full border-2 border-dashed border-white/20 animate-spin-slow"></div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Tu Voz</h3>
-                  <p className="text-sm text-gray-400">Potencia tu talento</p>
-                  
-                  {/* Ondas decorativas */}
-                  <div className="absolute bottom-0 left-0 right-0 h-32 flex items-end justify-center gap-1 pb-4 opacity-50">
-                    {[40, 60, 30, 80, 50, 90, 40, 60].map((h, i) => (
-                      <div 
-                        key={i} 
-                        className="w-2 rounded-full animate-music-bar" 
-                        style={{ 
-                          height: `${h}%`, 
-                          backgroundColor: theme.colors.secondary, 
-                          animationDelay: `${i * 0.1}s` 
-                        }}
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pointer-events-none">
-                <p className="font-bold text-white">Tu Vocal Coach</p>
-                <p className="text-sm text-gray-300">Entrenamiento Profesional</p>
-              </div>
-            </div>
-            
-            {/* Decorative Elements */}
-            <div 
-              className="absolute top-20 right-20 w-64 h-64 border-2 border-dashed rounded-full z-10 animate-spin-slow" 
-              style={{ borderColor: `${theme.colors.secondary}50` }}
-            ></div>
-            <div className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-full opacity-20 blur-xl"></div>
-            
-            {/* Floating Badge */}
-            <div className="absolute top-1/4 -right-4 lg:-right-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 z-30 shadow-xl animate-bounce-slow">
-              <Music className="w-8 h-8 mb-2" style={{ color: theme.colors.secondary }} />
-              <p className="text-xs font-bold">Técnica<br/>Mixta</p>
-            </div>
+            <p className="text-sm font-semibold tracking-widest uppercase text-gray-300">Para todos los niveles</p>
           </div>
         </div>
       </div>
