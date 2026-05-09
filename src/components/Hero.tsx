@@ -22,7 +22,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             alt="Vocal Coach Background" 
             fill
             priority
-            quality={100}
             className="object-cover object-[center_15%] sm:object-[center_20%]"
             onError={() => setHeroImageError(true)}
           />
