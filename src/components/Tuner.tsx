@@ -12,7 +12,7 @@ export const Tuner: React.FC = () => {
   const [pitch, setPitch] = useState(0); // -50 to 50 cents
   const [note, setNote] = useState('-');
   const [feedback, setFeedback] = useState('Canta una nota...');
-  const [feedbackColor, setFeedbackColor] = useState(theme.colors.accent);
+  const [feedbackColor, setFeedbackColor] = useState<string>(theme.colors.accent);
 
   useEffect(() => {
     if (!isRecording) {
