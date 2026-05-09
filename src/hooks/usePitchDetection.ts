@@ -63,7 +63,7 @@ export const usePitchDetection = (isRecording: boolean) => {
         const updatePitch = () => {
           if (!analyserRef.current) return;
           
-          analyserRef.current.getFloatTimeDomainData(inputBuffer);
+          analyserRef.current.getFloatTimeDomainData(inputBuffer as any);
           const [pitchValue, clarity] = detector.findPitch(inputBuffer, audioCtx.sampleRate);
 
           if (clarity > 0.8 && pitchValue > 50 && pitchValue < 2000) {
