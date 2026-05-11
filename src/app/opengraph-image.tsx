@@ -36,11 +36,11 @@ export default function OpenGraphImage() {
           <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
           <line x1="12" x2="12" y1="19" y2="22" />
         </svg>
-        <div style={{ fontSize: 72, fontWeight: 'bold', color: '#FFFFFF', marginBottom: 20 }}>
+        <div style={{ fontSize: 88, fontWeight: 'bold', color: '#FFFFFF', marginBottom: 20 }}>
           Tu Coach Vocal
         </div>
-        <div style={{ fontSize: 36, color: '#A0A0B0' }}>
-          Clases de canto y entrenamiento vocal con Carla Abalos
+        <div style={{ fontSize: 48, letterSpacing: '0.1em', color: '#A0A0B0' }}>
+          CARLA ABALOS
         </div>
       </div>
     ),
