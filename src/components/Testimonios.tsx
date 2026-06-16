@@ -61,7 +61,11 @@ export const Testimonios: React.FC = () => {
   return (
     <section id="testimonios" className="py-20 px-4 md:px-6 relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center mb-12">
-        <Star className="w-8 h-8 text-yellow-400 mx-auto mb-4 fill-current" />
+        <div className="flex justify-center gap-1 mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-8 h-8 text-yellow-400 fill-current" />
+          ))}
+        </div>
         <h2 className="text-3xl font-bold">Lo que dicen mis alumnos</h2>
       </div>
       

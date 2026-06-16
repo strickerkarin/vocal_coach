@@ -6,6 +6,7 @@ interface PitchData {
   clarity: number;
   note: string;
   cents: number;
+  noteNumber: number;
 }
 
 const noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
@@ -60,6 +61,8 @@ export const usePitchDetection = (isRecording: boolean) => {
         detector = PitchDetector.forFloat32Array(analyser.fftSize);
         inputBuffer = new Float32Array(detector.inputLength);
 
+        const lastValidTimeRef = { current: Date.now() };
+
         const updatePitch = () => {
           if (!analyserRef.current) return;
           
@@ -70,13 +73,20 @@ export const usePitchDetection = (isRecording: boolean) => {
             const noteNumber = getNoteFromFrequency(pitchValue);
             const noteName = formatNoteName(noteNumber);
             const cents = getCentsOffPitch(pitchValue, noteNumber);
+            lastValidTimeRef.current = Date.now();
 
             setPitchData({
               pitch: pitchValue,
               clarity,
               note: noteName,
-              cents
+              cents,
+              noteNumber
             });
+          } else {
+            // Only set pitchData to null if there has been silence / low clarity for more than 150ms
+            if (Date.now() - lastValidTimeRef.current > 150) {
+              setPitchData(null);
+            }
           }
 
           animationFrameRef.current = requestAnimationFrame(updatePitch);
