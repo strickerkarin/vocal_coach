@@ -16,6 +16,16 @@ const tunerExercises = [
   { note: 'Sol4', midi: 67, name: 'Sol4 (G4)', description: 'Tono agudo desafiante (392 Hz). Usa tu resonancia de cabeza.' },
 ];
 
+const notesGuide = [
+  { cipher: 'C', latin: 'DO', color: '#4EA8DE' },
+  { cipher: 'D', latin: 'RE', color: '#94D2BD' },
+  { cipher: 'E', latin: 'MI', color: '#E9C46A' },
+  { cipher: 'F', latin: 'FA', color: '#F4A261' },
+  { cipher: 'G', latin: 'SOL', color: '#E76F51' },
+  { cipher: 'A', latin: 'LA', color: '#EC96A4' },
+  { cipher: 'B', latin: 'SI', color: '#A0A0B0' },
+];
+
 export const Tuner: React.FC<TunerProps> = ({ viewMode = 'section' }) => {
   const [isRecording, setIsRecording] = useState(false);
   const pitchData = usePitchDetection(isRecording);
@@ -206,204 +216,255 @@ export const Tuner: React.FC<TunerProps> = ({ viewMode = 'section' }) => {
 
   const renderInnerCard = () => {
     return (
-      <div className="w-full">
-        {/* Mode Selector Tabs */}
-        <div className="flex gap-2 p-1 bg-white/5 rounded-2xl mb-8 w-full max-w-xs mx-auto border border-white/5">
-          <button
-            onClick={() => {
-              setTunerMode('free');
-              setExerciseCompleted(false);
-              setHoldProgress(0);
-            }}
-            className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${
-              tunerMode === 'free'
-                ? 'bg-[#EC96A4]/20 text-white border border-[#EC96A4]/30'
-                : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            Libre
-          </button>
-          <button
-            onClick={() => {
-              setTunerMode('exercise');
-              setExerciseCompleted(false);
-              setHoldProgress(0);
-            }}
-            className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${
-              tunerMode === 'exercise'
-                ? 'bg-[#EC96A4]/20 text-white border border-[#EC96A4]/30'
-                : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            Ejercicios
-          </button>
-        </div>
-
-        {/* Free Mode Layout */}
-        {tunerMode === 'free' && (
-          <div className="flex flex-col items-center justify-center mb-8">
-            <p className="text-gray-400 font-medium mb-1 uppercase tracking-widest text-xs">Nota Cantada</p>
-            <h3 className="text-6xl md:text-8xl font-black text-white drop-shadow-lg">{note}</h3>
-            <p className="mt-4 text-lg font-medium transition-colors duration-300" style={{ color: feedbackColor }}>
-              {feedback}
-            </p>
-          </div>
-        )}
-
-        {/* Exercise Mode Layout */}
-        {tunerMode === 'exercise' && (
-          <div className="mb-6 w-full">
-            {/* Exercise note buttons */}
-            <div className="flex gap-2 justify-center mb-6 overflow-x-auto pb-2">
-              {tunerExercises.map((ex, idx) => (
-                <button
-                  key={ex.name}
-                  onClick={() => {
-                    setCurrentExerciseIndex(idx);
-                    setExerciseCompleted(false);
-                    setHoldProgress(0);
-                  }}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
-                    currentExerciseIndex === idx
-                      ? 'bg-[#EC96A4]/20 border-[#EC96A4]/40 text-white'
-                      : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {ex.note}
-                </button>
-              ))}
-            </div>
-
-            {/* Exercise target details */}
-            <div className="bg-white/5 border border-white/5 rounded-2xl p-4 text-center mb-6 relative overflow-hidden">
-              <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Nota Objetivo</p>
-              <h4 className="text-3xl font-black text-[#EC96A4]">{tunerExercises[currentExerciseIndex].name}</h4>
-              <p className="text-xs text-gray-400 mt-2 max-w-xs mx-auto">{tunerExercises[currentExerciseIndex].description}</p>
-              
+      <div className="flex flex-col md:flex-row gap-6 lg:gap-8 w-full items-stretch">
+        {/* Left Column: Tuner Controls & Visualizer */}
+        <div className="flex-1 min-w-0 flex flex-col justify-between">
+          <div>
+            {/* Mode Selector Tabs */}
+            <div className="flex gap-2 p-1 bg-white/5 rounded-2xl mb-8 w-full max-w-xs mx-auto border border-white/5">
               <button
-                onClick={() => playReference(tunerExercises[currentExerciseIndex].midi)}
-                className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 rounded-full text-xs text-white font-bold transition-all"
+                onClick={() => {
+                  setTunerMode('free');
+                  setExerciseCompleted(false);
+                  setHoldProgress(0);
+                }}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${
+                  tunerMode === 'free'
+                    ? 'bg-[#EC96A4]/20 text-white border border-[#EC96A4]/30'
+                    : 'text-gray-400 hover:text-white'
+                }`}
               >
-                <Volume2 size={14} className="text-[#EC96A4]" /> Escuchar Referencia
+                Libre
+              </button>
+              <button
+                onClick={() => {
+                  setTunerMode('exercise');
+                  setExerciseCompleted(false);
+                  setHoldProgress(0);
+                }}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${
+                  tunerMode === 'exercise'
+                    ? 'bg-[#EC96A4]/20 text-white border border-[#EC96A4]/30'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Ejercicios
               </button>
             </div>
 
-            {/* Current status display */}
-            <div className="flex flex-col items-center justify-center mb-6">
-              <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Nota Detectada</p>
-              <h3 className="text-5xl font-black text-white">{note}</h3>
-              
-              <p className="mt-3 text-sm font-medium transition-colors duration-300" style={{ color: feedbackColor }}>
-                {feedback}
-              </p>
-            </div>
-
-            {/* Progress bar */}
-            {isRecording && !exerciseCompleted && (
-              <div className="w-full bg-white/5 border border-white/5 rounded-xl p-3 mb-6">
-                <div className="flex justify-between text-[9px] text-gray-400 mb-1.5 font-bold uppercase tracking-wider">
-                  <span>Sostén la afinación (1.5s)...</span>
-                  <span>{Math.round(holdProgress)}%</span>
-                </div>
-                <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] transition-all duration-100"
-                    style={{ width: `${holdProgress}%` }}
-                  ></div>
-                </div>
-              </div>
-            )}
-
-            {/* Exercise Completed Banner */}
-            {exerciseCompleted && (
-              <div className="w-full bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 text-center mb-6">
-                <p className="text-sm font-bold text-emerald-400 flex items-center justify-center gap-1.5">
-                  <CheckCircle size={16} /> ¡Excelente! Nota Afinada
+            {/* Free Mode Layout */}
+            {tunerMode === 'free' && (
+              <div className="flex flex-col items-center justify-center mb-8">
+                <p className="text-gray-400 font-medium mb-1 uppercase tracking-widest text-xs">Nota Cantada</p>
+                <h3 className="text-6xl md:text-8xl font-black text-white drop-shadow-lg">{note}</h3>
+                <p className="mt-4 text-lg font-medium transition-colors duration-300" style={{ color: feedbackColor }}>
+                  {feedback}
                 </p>
-                <button
-                  onClick={() => {
-                    const nextIdx = (currentExerciseIndex + 1) % tunerExercises.length;
-                    setCurrentExerciseIndex(nextIdx);
-                    setExerciseCompleted(false);
-                    setHoldProgress(0);
-                  }}
-                  className="mt-2 text-xs font-bold text-[#EC96A4] hover:underline"
-                >
-                  Siguiente Ejercicio →
-                </button>
               </div>
             )}
-          </div>
-        )}
 
-        {/* Gauge / Meter Concept */}
-        <div className="w-full mb-8">
-          <div className="relative w-full h-10 flex items-center mb-2">
-            {/* Bar */}
-            <div className="w-full h-4 bg-gray-800 rounded-full relative overflow-hidden flex shadow-inner">
-              {/* Gradient meter background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#EF476F] via-[#94D2BD] to-[#FFD166] opacity-85"></div>
-              
-              {/* Center marker */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_white] z-10 transform -translate-x-1/2"></div>
+            {/* Exercise Mode Layout */}
+            {tunerMode === 'exercise' && (
+              <div className="mb-6 w-full">
+                {/* Exercise note buttons */}
+                <div className="flex gap-2 justify-center mb-6 overflow-x-auto pb-2">
+                  {tunerExercises.map((ex, idx) => (
+                    <button
+                      key={ex.name}
+                      onClick={() => {
+                        setCurrentExerciseIndex(idx);
+                        setExerciseCompleted(false);
+                        setHoldProgress(0);
+                      }}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                        currentExerciseIndex === idx
+                          ? 'bg-[#EC96A4]/20 border-[#EC96A4]/40 text-white'
+                          : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {ex.note}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Exercise target details */}
+                <div className="bg-white/5 border border-white/5 rounded-2xl p-4 text-center mb-6 relative overflow-hidden">
+                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Nota Objetivo</p>
+                  <h4 className="text-3xl font-black text-[#EC96A4]">{tunerExercises[currentExerciseIndex].name}</h4>
+                  <p className="text-xs text-gray-400 mt-2 max-w-xs mx-auto">{tunerExercises[currentExerciseIndex].description}</p>
+                  
+                  <button
+                    onClick={() => playReference(tunerExercises[currentExerciseIndex].midi)}
+                    className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 rounded-full text-xs text-white font-bold transition-all"
+                  >
+                    <Volume2 size={14} className="text-[#EC96A4]" /> Escuchar Referencia
+                  </button>
+                </div>
+
+                {/* Current status display */}
+                <div className="flex flex-col items-center justify-center mb-6">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Nota Detectada</p>
+                  <h3 className="text-5xl font-black text-white">{note}</h3>
+                  
+                  <p className="mt-3 text-sm font-medium transition-colors duration-300" style={{ color: feedbackColor }}>
+                    {feedback}
+                  </p>
+                </div>
+
+                {/* Progress bar */}
+                {isRecording && !exerciseCompleted && (
+                  <div className="w-full bg-white/5 border border-white/5 rounded-xl p-3 mb-6">
+                    <div className="flex justify-between text-[9px] text-gray-400 mb-1.5 font-bold uppercase tracking-wider">
+                      <span>Sostén la afinación (1.5s)...</span>
+                      <span>{Math.round(holdProgress)}%</span>
+                    </div>
+                    <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] transition-all duration-100"
+                        style={{ width: `${holdProgress}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Exercise Completed Banner */}
+                {exerciseCompleted && (
+                  <div className="w-full bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 text-center mb-6">
+                    <p className="text-sm font-bold text-emerald-400 flex items-center justify-center gap-1.5">
+                      <CheckCircle size={16} /> ¡Excelente! Nota Afinada
+                    </p>
+                    <button
+                      onClick={() => {
+                        const nextIdx = (currentExerciseIndex + 1) % tunerExercises.length;
+                        setCurrentExerciseIndex(nextIdx);
+                        setExerciseCompleted(false);
+                        setHoldProgress(0);
+                      }}
+                      className="mt-2 text-xs font-bold text-[#EC96A4] hover:underline"
+                    >
+                      Siguiente Ejercicio →
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Gauge / Meter Concept */}
+            <div className="w-full mb-8">
+              <div className="relative w-full h-10 flex items-center mb-2">
+                {/* Bar */}
+                <div className="w-full h-4 bg-gray-800 rounded-full relative overflow-hidden flex shadow-inner">
+                  {/* Gradient meter background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#EF476F] via-[#94D2BD] to-[#FFD166] opacity-85"></div>
+                  
+                  {/* Center marker */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_white] z-10 transform -translate-x-1/2"></div>
+                </div>
+
+                {/* Moving Needle Indicator (Responsive: 150ms) */}
+                <div 
+                  className="absolute top-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.8)] border-4 z-20 transition-[left] duration-150 ease-out transform -translate-x-1/2 -translate-y-1/2"
+                  style={{ 
+                    left: `${getNeedlePosition()}%`, 
+                    borderColor: theme.colors.secondary 
+                  }}
+                ></div>
+              </div>
+
+              {/* Ticks and labels */}
+              <div className="w-full flex justify-between text-[10px] text-gray-400 font-bold uppercase tracking-wider px-1">
+                <span>Bajo (Flat)</span>
+                <span>Afinado</span>
+                <span>Alto (Sharp)</span>
+              </div>
             </div>
 
-            {/* Moving Needle Indicator (Responsive: 150ms) */}
-            <div 
-              className="absolute top-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.8)] border-4 z-20 transition-[left] duration-150 ease-out transform -translate-x-1/2 -translate-y-1/2"
-              style={{ 
-                left: `${getNeedlePosition()}%`, 
-                borderColor: theme.colors.secondary 
-              }}
-            ></div>
+            {/* Simulated Audio Waves */}
+            <div className="flex items-end justify-center h-16 gap-1 mb-8 opacity-60">
+              {[...Array(24)].map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`w-1.5 rounded-t-full transition-all duration-150 ${isRecording ? 'animate-music-bar' : 'h-1'}`}
+                  style={{ 
+                    backgroundColor: i % 2 === 0 ? theme.colors.secondary : theme.colors.success,
+                    animationDelay: `${(i % 8) * 0.06}s`,
+                    height: isRecording ? `${20 + (i % 6) * 12}%` : '4px'
+                  }}
+                ></div>
+              ))}
+            </div>
           </div>
 
-          {/* Ticks and labels */}
-          <div className="w-full flex justify-between text-[10px] text-gray-400 font-bold uppercase tracking-wider px-1">
-            <span>Bajo (Flat)</span>
-            <span>Afinado</span>
-            <span>Alto (Sharp)</span>
+          {/* Controls */}
+          <div className="flex justify-center">
+            <button 
+              onClick={toggleRecording}
+              className={`flex items-center gap-3 px-10 py-4 rounded-full font-bold text-base transition-all transform hover:scale-105 shadow-xl ${
+                isRecording ? 'bg-red-500 hover:bg-red-600 text-white shadow-[0_0_30px_rgba(239,71,111,0.4)]' : 'text-primary'
+              }`}
+              style={{ 
+                backgroundColor: isRecording ? '#EF476F' : theme.colors.secondary,
+              }}
+            >
+              {isRecording ? (
+                <>
+                  <Activity size={20} className="animate-pulse" />
+                  Detener
+                </>
+              ) : (
+                <>
+                  <Mic size={20} />
+                  Iniciar Micrófono
+                </>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Simulated Audio Waves */}
-        <div className="flex items-end justify-center h-16 gap-1 mb-8 opacity-60">
-          {[...Array(24)].map((_, i) => (
-            <div 
-              key={i} 
-              className={`w-1.5 rounded-t-full transition-all duration-150 ${isRecording ? 'animate-music-bar' : 'h-1'}`}
-              style={{ 
-                backgroundColor: i % 2 === 0 ? theme.colors.secondary : theme.colors.success,
-                animationDelay: `${(i % 8) * 0.06}s`,
-                height: isRecording ? `${20 + (i % 6) * 12}%` : '4px'
-              }}
-            ></div>
-          ))}
-        </div>
-
-        {/* Controls */}
-        <div className="flex justify-center">
-          <button 
-            onClick={toggleRecording}
-            className={`flex items-center gap-3 px-10 py-4 rounded-full font-bold text-base transition-all transform hover:scale-105 shadow-xl ${
-              isRecording ? 'bg-red-500 hover:bg-red-600 text-white shadow-[0_0_30px_rgba(239,71,111,0.4)]' : 'text-primary'
-            }`}
-            style={{ 
-              backgroundColor: isRecording ? '#EF476F' : theme.colors.secondary,
-            }}
-          >
-            {isRecording ? (
-              <>
-                <Activity size={20} className="animate-pulse" />
-                Detener
-              </>
-            ) : (
-              <>
-                <Mic size={20} />
-                Iniciar Micrófono
-              </>
-            )}
-          </button>
+        {/* Right Column: Note Guide */}
+        <div className="w-full md:w-52 shrink-0 bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col justify-center">
+          <h4 className="text-xs font-black text-white uppercase tracking-widest mb-4 text-center border-b border-white/5 pb-2">
+            Guía de Cifrado
+          </h4>
+          <div className="flex flex-col gap-2">
+            {notesGuide.map((item) => {
+              const isCurrent = isRecording && note.startsWith(item.cipher);
+              return (
+                <div
+                  key={item.cipher}
+                  className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-all duration-300 ${
+                    isCurrent
+                      ? 'bg-white/10 border-white/20 shadow-md scale-[1.02]'
+                      : 'bg-transparent border-transparent opacity-65'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span 
+                      className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm transition-transform duration-300 ${
+                        isCurrent ? 'scale-110' : ''
+                      }`}
+                      style={{ 
+                        backgroundColor: isCurrent ? item.color : 'rgba(255, 255, 255, 0.05)',
+                        color: isCurrent ? '#1A1A2E' : item.color,
+                        boxShadow: isCurrent ? `0 0 10px ${item.color}80` : 'none'
+                      }}
+                    >
+                      {item.cipher}
+                    </span>
+                    <span className={`font-extrabold text-sm tracking-wide transition-colors ${isCurrent ? 'text-white' : 'text-gray-300'}`}>
+                      {item.latin}
+                    </span>
+                  </div>
+                  {isCurrent && (
+                    <span className="flex h-2 w-2 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: item.color }}></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: item.color }}></span>
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -447,7 +508,7 @@ export const Tuner: React.FC<TunerProps> = ({ viewMode = 'section' }) => {
           </div>
         </div>
 
-        <div className="max-w-[500px] mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 md:p-8 shadow-2xl relative overflow-hidden">
+        <div className="max-w-[760px] mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 md:p-8 shadow-2xl relative overflow-hidden">
           {renderInnerCard()}
         </div>
       </div>
