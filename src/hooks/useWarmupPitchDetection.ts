@@ -44,13 +44,7 @@ export const useWarmupPitchDetection = (isRecording: boolean) => {
 
     const startRecording = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ 
-          audio: {
-            echoCancellation: false,
-            autoGainControl: false,
-            noiseSuppression: false
-          } 
-        });
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         streamRef.current = stream;
 
         const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
