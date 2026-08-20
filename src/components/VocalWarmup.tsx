@@ -85,6 +85,7 @@ export const VocalWarmup: React.FC = () => {
     } catch (e) {
       console.error('No se pudo leer el rango vocal', e);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   const [score, setScore] = useState(0);
@@ -437,7 +438,7 @@ export const VocalWarmup: React.FC = () => {
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [gameState, startMidi]);
+  }, [gameState, startMidi, endMidi]);
 
 
   return (
