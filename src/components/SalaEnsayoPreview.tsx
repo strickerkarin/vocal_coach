@@ -8,6 +8,22 @@ import { theme } from '@/constants/theme';
 export const SalaEnsayoPreview: React.FC = () => {
   const tools = [
     {
+      id: 'range',
+      icon: <Music size={24} style={{ color: theme.colors.success }} />,
+      title: 'Test de Rango Vocal',
+      desc: 'Encuentra tus notas límites (graves y agudas) y descubre tu tipo de voz.',
+      status: 'active',
+      statusText: 'Disponible'
+    },
+    {
+      id: 'warmup',
+      icon: <Music size={24} style={{ color: '#EC96A4' }} />,
+      title: 'Vocalizaciones',
+      desc: 'Rutinas interactivas para calentar la voz con feedback visual en tiempo real.',
+      status: 'active',
+      statusText: 'Disponible'
+    },
+    {
       id: 'tuner',
       icon: <Mic size={24} style={{ color: theme.colors.secondary }} />,
       title: 'Afinador de Voz',
@@ -20,14 +36,6 @@ export const SalaEnsayoPreview: React.FC = () => {
       icon: <Wind size={24} className="text-blue-300" />,
       title: 'Control de Respiración',
       desc: 'Ejercicios con guías visuales y temporizadores para entrenar el soporte del aire.',
-      status: 'active',
-      statusText: 'Disponible'
-    },
-    {
-      id: 'range',
-      icon: <Music size={24} style={{ color: theme.colors.success }} />,
-      title: 'Test de Rango Vocal',
-      desc: 'Encuentra tus notas límites (graves y agudas) y descubre tu tipo de voz.',
       status: 'active',
       statusText: 'Disponible'
     },
@@ -64,7 +72,7 @@ export const SalaEnsayoPreview: React.FC = () => {
         </div>
 
         {/* Grid of Tools Preview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
           {tools.map((tool, index) => (
             <Link 
               key={index} 

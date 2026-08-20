@@ -64,9 +64,9 @@ const midiNotes = [
 
 const totalWhiteKeys = midiNotes.filter(n => !n.isBlack).length; // 29 keys
 
-const noteNamesSp = ["Do", "Do#", "Re", "Re#", "Mi", "Fa", "Fa#", "Sol", "Sol#", "La", "La#", "Si"];
+const noteNamesEn = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 function formatMidiNoteName(midi: number): string {
-  const note = noteNamesSp[midi % 12];
+  const note = noteNamesEn[midi % 12];
   const octave = Math.floor(midi / 12) - 1;
   return `${note}${octave}`;
 }
@@ -203,6 +203,15 @@ export const VocalRangeTest: React.FC = () => {
     if (currentHighest !== null) {
       setHighestMidi(currentHighest);
       setStage('result');
+      
+      // Guardar en la memoria del navegador para la Sala de Ensayo
+      if (lowestMidi !== null) {
+        localStorage.setItem('vocalRange', JSON.stringify({
+          lowestMidi: lowestMidi,
+          highestMidi: currentHighest,
+          gender: gender
+        }));
+      }
     }
   };
 
@@ -645,20 +654,28 @@ export const VocalRangeTest: React.FC = () => {
               <p className="text-xs text-gray-400 leading-relaxed mt-2">
                 Conocer tu rango te ayuda a transponer canciones a tonos que no fuercen tus límites. Recuerda que con entrenamiento técnico y de apoyo puedes extender tu rango (sobre todo los agudos en voz de cabeza) hasta media octava más.
               </p>
+              
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <button 
+                  onClick={restartTest}
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-xl transition-all"
+                >
+                  <RefreshCw size={16} /> Repetir Test
+                </button>
+
+                <button 
+                  onClick={() => window.location.href = '?tool=warmup'}
+                  className="flex-1 py-4 bg-emerald-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20"
+                >
+                  Siguiente Módulo: Vocalizaciones →
+                </button>
+              </div>
+              </div>
             </div>
-
-            {/* Restart Button */}
-            <button 
-              onClick={restartTest}
-              className="flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-full transition-all hover:scale-105"
-            >
-              <RefreshCw size={16} /> Repetir Test
-            </button>
-
-          </div>
-        )}
-
+      )}
       </div>
     </div>
   );
 };
+

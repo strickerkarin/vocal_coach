@@ -9,21 +9,34 @@ import { Tuner } from '@/components/Tuner';
 import { BreathingExercise } from '@/components/BreathingExercise';
 import { VocalRangeTest } from '@/components/VocalRangeTest';
 import { EarTraining } from '@/components/EarTraining';
+import { VocalWarmup } from '@/components/VocalWarmup';
 
-type ActiveTool = 'tuner' | 'breathing' | 'range' | 'ear';
+type ActiveTool = 'tuner' | 'warmup' | 'breathing' | 'range' | 'ear';
 
 function SalaDeEnsayoContent() {
-  const [activeTool, setActiveTool] = useState<ActiveTool>('tuner');
+  const [activeTool, setActiveTool] = useState<ActiveTool>('range');
   const searchParams = useSearchParams();
   const toolParam = searchParams.get('tool') as ActiveTool;
 
   useEffect(() => {
-    if (toolParam && ['tuner', 'breathing', 'range', 'ear'].includes(toolParam)) {
+    if (toolParam && ['tuner', 'warmup', 'breathing', 'range', 'ear'].includes(toolParam)) {
       setActiveTool(toolParam);
     }
   }, [toolParam]);
 
   const tools = [
+    {
+      id: 'range' as ActiveTool,
+      label: 'Test de Rango Vocal',
+      icon: <Music size={20} />,
+      color: theme.colors.success
+    },
+    {
+      id: 'warmup' as ActiveTool,
+      label: 'Vocalizaciones',
+      icon: <Music size={20} />,
+      color: '#EC96A4'
+    },
     {
       id: 'tuner' as ActiveTool,
       label: 'Afinador de Voz',
@@ -35,12 +48,6 @@ function SalaDeEnsayoContent() {
       label: 'Control de Respiración',
       icon: <Wind size={20} />,
       color: '#4EA8DE'
-    },
-    {
-      id: 'range' as ActiveTool,
-      label: 'Test de Rango Vocal',
-      icon: <Music size={20} />,
-      color: theme.colors.success
     },
     {
       id: 'ear' as ActiveTool,
@@ -135,6 +142,10 @@ function SalaDeEnsayoContent() {
             <div className="animate-fade-in">
               <Tuner viewMode="card" />
             </div>
+          )}
+
+          {activeTool === 'warmup' && (
+            <VocalWarmup />
           )}
 
           {activeTool === 'breathing' && (

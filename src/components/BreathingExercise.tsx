@@ -329,6 +329,14 @@ export const BreathingExercise: React.FC = () => {
               La rutina de **Soporte Vocal (4-4-8-2)** entrena la resistencia diafragmática al duplicar el tiempo de exhalación respecto a la inhalación, imitando la presión que usas al cantar frases largas.
             </p>
           </div>
+          
+          {/* Navigation Button */}
+          <button 
+            onClick={() => window.location.href = '?tool=ear'}
+            className="w-full py-4 bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-2xl font-bold hover:bg-purple-500/30 transition-colors shadow-lg mt-2"
+          >
+            Siguiente Módulo: Entrenamiento Auditivo →
+          </button>
 
         </div>
 

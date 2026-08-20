@@ -10,10 +10,10 @@ interface TunerProps {
 }
 
 const tunerExercises = [
-  { note: 'Do4', midi: 60, name: 'Do4 (C4)', description: 'La nota central de referencia (261 Hz). Ideal para empezar.' },
-  { note: 'La3', midi: 57, name: 'La3 (A3)', description: 'Un tono de frecuencia media cómodo para calentar la voz (220 Hz).' },
-  { note: 'Mi4', midi: 64, name: 'Mi4 (E4)', description: 'Tono brillante y alto (329 Hz). Requiere mayor soporte abdominal.' },
-  { note: 'Sol4', midi: 67, name: 'Sol4 (G4)', description: 'Tono agudo desafiante (392 Hz). Usa tu resonancia de cabeza.' },
+  { note: 'C4', midi: 60, name: 'C4', description: 'La nota central de referencia (261 Hz). Ideal para empezar.' },
+  { note: 'A3', midi: 57, name: 'A3', description: 'Un tono de frecuencia media cómodo para calentar la voz (220 Hz).' },
+  { note: 'E4', midi: 64, name: 'E4', description: 'Tono brillante y alto (329 Hz). Requiere mayor soporte abdominal.' },
+  { note: 'G4', midi: 67, name: 'G4', description: 'Tono agudo desafiante (392 Hz). Usa tu resonancia de cabeza.' },
 ];
 
 const notesGuide = [
@@ -333,17 +333,25 @@ export const Tuner: React.FC<TunerProps> = ({ viewMode = 'section' }) => {
                     <p className="text-sm font-bold text-emerald-400 flex items-center justify-center gap-1.5">
                       <CheckCircle size={16} /> ¡Excelente! Nota Afinada
                     </p>
-                    <button
-                      onClick={() => {
-                        const nextIdx = (currentExerciseIndex + 1) % tunerExercises.length;
-                        setCurrentExerciseIndex(nextIdx);
-                        setExerciseCompleted(false);
-                        setHoldProgress(0);
-                      }}
-                      className="mt-2 text-xs font-bold text-[#EC96A4] hover:underline"
-                    >
-                      Siguiente Ejercicio →
-                    </button>
+                    <div className="flex flex-col gap-2 mt-4">
+                      <button
+                        onClick={() => {
+                          const nextIdx = (currentExerciseIndex + 1) % tunerExercises.length;
+                          setCurrentExerciseIndex(nextIdx);
+                          setExerciseCompleted(false);
+                          setHoldProgress(0);
+                        }}
+                        className="py-2.5 px-4 bg-[#EC96A4]/20 text-[#EC96A4] rounded-xl font-bold hover:bg-[#EC96A4]/30 transition-colors"
+                      >
+                        Siguiente Ejercicio
+                      </button>
+                      <button
+                        onClick={() => window.location.href = '?tool=breathing'}
+                        className="py-2.5 px-4 bg-blue-500/20 text-blue-300 rounded-xl font-bold hover:bg-blue-500/30 transition-colors"
+                      >
+                        Siguiente Módulo: Respiración →
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
